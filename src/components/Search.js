@@ -20,7 +20,7 @@ const Search = () => {
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
-  
+
   const handleSearch = async () => {
     setLoading(true);
     const q = query(
@@ -45,7 +45,7 @@ const Search = () => {
   };
   const handleKey = (e) => {
     setUser(null);
-    e.code === "Enter" && handleSearch();
+    e.keyCode === 13 && handleSearch();
   };
   const handleClearSearch = () => {
     setUsername("");

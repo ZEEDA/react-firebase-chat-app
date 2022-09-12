@@ -107,7 +107,8 @@
     display: flex;
     overflow: hidden;
     .sidebar {
-      flex: 0.8;
+      position: fixed;
+      transform: translateX(-100%);
       background-color: var(--bg-dark);
       .navbar {
         display: flex;
@@ -227,7 +228,7 @@
         &:hover {
           background-color: var(--bg-dark-shade);
         }
-        .row{
+        .row {
           display: flex;
           align-items: center;
           gap: 10px;
@@ -252,7 +253,6 @@
               color: var(--text-color-light);
               margin: 0;
             }
-  
           }
         }
         .date {
@@ -272,7 +272,8 @@
       }
     }
     .chat {
-      flex: 2.2;
+      width: 100%;
+      flex: 0 0 100%;
       .chatInfo {
         position: relative;
         height: 50px;
@@ -281,10 +282,34 @@
         justify-content: space-between;
         padding: 10px;
         color: var(--text-color-light);
-        & > span,
+        & > .title,
         > div {
           position: relative;
           z-index: 2;
+        }
+        .title {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          .btn {
+            margin-right: 0;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+            color: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+              width: 22px;
+              fill: var(--bg-light);
+            }
+          }
+          span {
+            font-weight: bold;
+            color: var(--bg-light);
+          }
         }
         &::before {
           content: "";
@@ -402,7 +427,19 @@
         }
       }
     }
-
+    @media (min-width: 500px) {
+      .sidebar {
+        flex: 1.3;
+        position: relative;
+        transform: translate(0, 0);
+      }
+      .chat {
+        flex: 2.7;
+        .chatInfo .title .btn {
+          display: none;
+        }
+      }
+    }
     @media (min-width: 800px) {
       box-shadow: 0 2px 4px rgba(#404a48, 0.16), 0 4px 24px rgba(#404a48, 0.12),
         0 8px 48px rgba(#404a48, 0.1);
